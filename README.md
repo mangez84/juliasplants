@@ -7,3 +7,15 @@ We have a large selection of high quality plants for sale.
 Create an account and get a 25% discount on your first purchase!
 
 Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
+
+## Table of Contents
+
+1. [UX](#ux)
+    - [User Stories](#user-stories)
+        - [Unregistered Customer Goals](#unregistered-customer-goals)
+        - [Registered Customer Goals](#registered-customer-goals)
+    - [Business Goals](#business-goals)
+    - [Design](#design)
+        - [Colours](#colours)
+        - [Fonts](#fonts)
+    - [Wireframes](#wireframes)
