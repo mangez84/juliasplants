@@ -25,7 +25,7 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 ### User Stories
 
 | As a/an               | I want to be able to...                                        | So that I can...                                                                  |
-| --------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| :-------------------- | :------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
 | Unregistered Customer | Clearly see the benefits registered users are entitled to      | Decide if I should register for an account                                        |
 | Unregistered Customer | Register for an account                                        | Use the benefits that customers with a registered account have access to          |
 | Registered Customer   | Have a personal profile page                                   | See my order history and update my contact, payment and delivery information      |
@@ -44,3 +44,12 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 | Site Admin            | Add new plants to the site                                     | Make sure new plants are displayed on the site                                    |
 | Site Admin            | Update information for existing plants                         | Make sure that the correct information about the plants is displayed on the site  |
 | Site Admin            | Delete a plant                                                 | Make sure that plants that are no longer for sale are removed from the site       |
+
+### Business Goals
+
+- Have a user-friendly and beautiful website where it is easy to buy plants.
+- Increase profitability by not having any physical stores.
+- Have a large customer base by having very favorable prices for registered customers.
+- Offer high-quality plants and reliable deliveries to increase the customer base.
+- Have a varied selection of plants for sale.
+- Ensure that customer support is fast and of high quality.
