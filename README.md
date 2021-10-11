@@ -29,7 +29,7 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 
 | As a/an               | I want to be able to...                                        | So that I can...                                                                  |
 | :-------------------- | :------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
-| Unregistered Customer | Clearly see the benefits registered users are entitled to      | Decide if I should register for an account                                        |
+| Unregistered Customer | Clearly see the benefits registered customers are entitled to  | Decide if I should register for an account                                        |
 | Unregistered Customer | Register for an account                                        | Use the benefits that customers with a registered account have access to          |
 | Registered Customer   | Have a personal profile page                                   | See my order history and update my contact, payment and delivery information      |
 | Registered Customer   | Log in and log out                                             | Gain access to my personal profile page                                           |
@@ -57,6 +57,20 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 - Have a varied selection of plants for sale.
 - Ensure that customer support is fast and of high quality.
 
+### Design
+
+#### Colours
+
+#### Fonts
+
+### Wireframes
+
+- [Home](wireframes/home.pdf)
+- [Register](wireframes/register.pdf)
+- [Login](wireframes/login.pdf)
+- [Plants](wireframes/plants.pdf)
+- [Plant Details](wireframes/plant_details.pdf)
+
 ## Features
 
 ### Existing Features
@@ -83,3 +97,5 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 - A site admin can add new plants to the site.
 - A site admin can update information for existing plants.
 - A site admin can delete a plant.
+
+### Upcoming Features
