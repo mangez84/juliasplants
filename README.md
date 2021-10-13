@@ -72,6 +72,7 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 - [Plant Details](wireframes/plant_details.pdf)
 - [Shopping Cart](wireframes/shopping_cart.pdf)
 - [Checkout](wireframes/checkout.pdf)
+- [My Profile](wireframes/my_profile.pdf)
 
 ## Features
 
