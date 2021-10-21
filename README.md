@@ -22,6 +22,7 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 2. [Features](#features)
     - [Existing Features](#existing-features)
     - [Upcoming Features](#upcoming-features)
+3. [Data Model](#data-model)
 
 ## UX
 
@@ -69,17 +70,17 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 
 ### Wireframes
 
-- [Home](wireframes/home.pdf)
-- [Register](wireframes/register.pdf)
-- [Login](wireframes/login.pdf)
-- [Plants](wireframes/plants.pdf)
-- [Plant Details](wireframes/plant_details.pdf)
-- [Shopping Cart](wireframes/shopping_cart.pdf)
-- [Checkout](wireframes/checkout.pdf)
-- [Order Confirmation](wireframes/order_confirmation.pdf)
-- [My Profile](wireframes/my_profile.pdf)
-- [Footer/Reviews](wireframes/footer_reviews.pdf)
-- [Blog](wireframes/blog.pdf)
+- [Home](readme/wireframes/home.pdf)
+- [Register](readme/wireframes/register.pdf)
+- [Login](readme/wireframes/login.pdf)
+- [Plants](readme/wireframes/plants.pdf)
+- [Plant Details](readme/wireframes/plant_details.pdf)
+- [Shopping Cart](readme/wireframes/shopping_cart.pdf)
+- [Checkout](readme/wireframes/checkout.pdf)
+- [Order Confirmation](readme/wireframes/order_confirmation.pdf)
+- [My Profile](readme/wireframes/my_profile.pdf)
+- [Footer/Reviews](readme/wireframes/footer_reviews.pdf)
+- [Blog](readme/wireframes/blog.pdf)
 
 ## Features
 
@@ -109,3 +110,7 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 - A site admin can delete a plant.
 
 ### Upcoming Features
+
+## Data Model
+
+- [Entity Relationship Diagram](readme/images/erd.png)
