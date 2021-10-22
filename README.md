@@ -75,12 +75,15 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 - [Login](readme/wireframes/login.pdf)
 - [Plants](readme/wireframes/plants.pdf)
 - [Plant Details](readme/wireframes/plant_details.pdf)
+- [Add/Edit Plant](readme/wireframes/add_edit_plant.pdf)
 - [Shopping Cart](readme/wireframes/shopping_cart.pdf)
 - [Checkout](readme/wireframes/checkout.pdf)
 - [Order Confirmation](readme/wireframes/order_confirmation.pdf)
 - [My Profile](readme/wireframes/my_profile.pdf)
 - [Footer/Reviews](readme/wireframes/footer_reviews.pdf)
 - [Blog](readme/wireframes/blog.pdf)
+- [Blog Post](readme/wireframes/blog_post.pdf)
+- [Add/Edit Blog Post](readme/wireframes/add_edit_blog_post.pdf)
 
 ## Features
 
