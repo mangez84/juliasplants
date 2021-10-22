@@ -22,7 +22,13 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 2. [Features](#features)
     - [Existing Features](#existing-features)
     - [Upcoming Features](#upcoming-features)
-3. [Data Model](#data-model)
+3. [Technologies Used](#technologies-used)
+    - [Languages Used](#languages-used)
+    - [Frameworks, Libraries and Software Used](#frameworks-libraries-and-software-used)
+4. [Data Model](#data-model)
+5. [Test](#test)
+6. [Deployment](#deployment)
+7. [Credits](#credits)
 
 ## UX
 
@@ -114,6 +120,28 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 
 ### Upcoming Features
 
+- None at the moment.
+
+## Technologies Used
+
+### Languages Used
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
+### Frameworks, Libraries and Software Used
+
+- [pgAdmin 4](https://www.pgadmin.org/)
+    - The entity relationship diagram was created with pgAdmin 4.
+
 ## Data Model
 
 - [Entity Relationship Diagram](readme/images/erd.png)
+
+## Test
+
+## Deployment
+
+## Credits
