@@ -1,3 +1,4 @@
+# pylint: disable=W0223
 '''Storage of static and media files in an AWS S3 bucket'''
 
 from django.conf import settings
