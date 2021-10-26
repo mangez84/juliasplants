@@ -26,6 +26,44 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home' %}">Julia's Plants</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbar-main" aria-controls="navbar-main"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-main">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbar-plants" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Plants
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbar-plants">
+                                <li><a class="dropdown-item" href="#">All Plants</a></li>
+                                <li><a class="dropdown-item" href="#">Indoor Plants</a></li>
+                                <li><a class="dropdown-item" href="#">Outdoor Plants</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Blog</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search Plants" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"><i
+                                class="fas fa-search fa-sm"></i></button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
     {% block content %}
     {% endblock %}
 
