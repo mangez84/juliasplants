@@ -79,8 +79,12 @@
             </div>
         </nav>
     </header>
+    {% block heading %}
+    {% endblock %}
     {% block content %}
     {% endblock %}
+    <footer>
+    </footer>
 
     {% block js %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

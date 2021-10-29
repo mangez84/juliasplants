@@ -1,0 +1,8 @@
+/* Hero background image */
+
+body {
+    background-image: url(/media/plant-g61e6ae0cf_1920.jpg);
+    background-position: right center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
