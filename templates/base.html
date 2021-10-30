@@ -49,7 +49,7 @@
                                 Plants
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbar-plants">
-                                <li><a class="dropdown-item" href="#">All Plants</a></li>
+                                <li><a class="dropdown-item" href="{% url 'plants' %}">All Plants</a></li>
                                 <li><a class="dropdown-item" href="#">Indoor Plants</a></li>
                                 <li><a class="dropdown-item" href="#">Outdoor Plants</a></li>
                             </ul>
@@ -88,12 +88,14 @@
                 </div>
             </div>
         </nav>
+        <div class="heading-container d-flex justify-content-center">
+            {% block heading %}
+            {% endblock %}
+        </div>
     </header>
     <div class="messages-container">
     </div>
-    {% block heading %}
-    {% endblock %}
-    <section>
+    <section class="content-container">
         {% block content %}
         {% endblock %}
     </section>
