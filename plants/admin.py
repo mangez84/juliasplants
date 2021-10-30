@@ -1,3 +1,27 @@
 from django.contrib import admin
+from .models import Plant, Category
 
-# Register your models here.
+
+class PlantAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'botanical_name',
+        'description',
+        'price',
+        'discount',
+        'image',
+        'category',
+    )
+    ordering = ('name',)
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'filter_name',
+    )
+    ordering = ('name',)
+
+
+admin.site.register(Plant, PlantAdmin)
+admin.site.register(Category, CategoryAdmin)
