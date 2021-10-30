@@ -13,8 +13,21 @@
 {% block content %}
 <div class="container d-flex flex-column flex-wrap flex-fill">
     <div class="row">
-        <div class="col-12 col-lg-4">
+        {% for plant in plants %}
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100">
+                <a href="#">
+                    <img src="{{ plant.image.url }}" class="card-img-top" alt="{{ plant.name }}">
+                </a>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ plant.name }}</h5>
+                    <p class="card-text"><em>{{ plant.botanical_name }}</em></p>
+                    <p class="card-text">{{ plant.description }}</p>
+                    <p class="card-text ms-auto mt-auto">{{ plant.price }} €</p>
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
