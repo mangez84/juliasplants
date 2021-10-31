@@ -8,7 +8,7 @@ class PlantAdmin(admin.ModelAdmin):
         'botanical_name',
         'description',
         'price',
-        'discount',
+        'discount_price',
         'image',
         'category',
     )

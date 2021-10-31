@@ -23,12 +23,7 @@
                     <h5 class="card-title">{{ plant.name }}</h5>
                     <p class="card-text"><em>{{ plant.botanical_name }}</em></p>
                     <p class="card-text">{{ plant.description }}</p>
-                    {% if plant.discount_price %}
-                    <p class="card-text ms-auto mt-auto"><del class="me-3">{{ plant.price }}
-                            €</del>{{ plant.discount_price }} €</p>
-                    {% else %}
                     <p class="card-text ms-auto mt-auto">{{ plant.price }} €</p>
-                    {% endif %}
                 </div>
             </div>
         </div>
