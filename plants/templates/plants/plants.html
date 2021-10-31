@@ -12,6 +12,28 @@
 
 {% block content %}
 <div class="container d-flex flex-column flex-wrap flex-fill">
+    <!-- Sort functionality -->
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <select id="sort-selector" class="form-select my-3" aria-label="Sort By">
+                <option value="default" {% if sort.key == None and sort.direction == None %}selected{% endif %}>
+                    Sort By
+                </option>
+                <option value="name_asc" {% if sort.key == 'name' and sort.direction == 'asc' %}selected{% endif %}>
+                    Name (A-Z)
+                </option>
+                <option value="name_desc" {% if sort.key == 'name' and sort.direction == 'desc' %}selected{% endif %}>
+                    Name (Z-A)
+                </option>
+                <option value="price_asc" {% if sort.key == 'price' and sort.direction == 'asc' %}selected{% endif %}>
+                    Price (Low to High)
+                </option>
+                <option value="price_desc" {% if sort.key == 'price' and sort.direction == 'desc' %}selected{% endif %}>
+                    Price (High to Low)
+                </option>
+            </select>
+        </div>
+    </div>
     <div class="row">
         {% for plant in plants %}
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
@@ -35,4 +57,9 @@
         {% endfor %}
     </div>
 </div>
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="{% static 'plants/js/plants.js' %}"></script>
 {% endblock %}

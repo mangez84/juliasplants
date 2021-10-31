@@ -1,7 +1,16 @@
-/* Bootstrap overrides */
+/*
+Override Bootstrap settings for card images
+Tip was found on https://stackoverflow.com/a/54207386
+*/
 
 .card-img-top {
     width: 100%;
     height: 25vh;
     object-fit: cover;
+}
+
+/* Allow sort selector to shrink but not to grow */
+
+#sort-selector {
+    flex: 0 1 25rem;
 }
