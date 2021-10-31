@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block css %}
 {{ block.super }}
@@ -7,27 +8,49 @@
 {% endblock %}
 
 {% block heading %}
-<h1>Plants</h1>
 {% endblock %}
 
 {% block content %}
-<div class="container d-flex flex-column flex-wrap flex-fill">
+<div class="container d-flex flex-column flex-wrap justify-content-center flex-fill">
     <div class="row">
-        {% for plant in plants %}
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100">
+        <div class="col-12 col-md-6">
+            <div class="card">
                 <a href="#">
                     <img src="{{ plant.image.url }}" class="card-img-top" alt="{{ plant.name }}">
                 </a>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ plant.name }}</h5>
                     <p class="card-text"><em>{{ plant.botanical_name }}</em></p>
+                    <p class="card-text">
+                        <a class="text-muted text-decoration-none"
+                            href="{% url 'plants' %}?category={{ plant.category.filter_name }}">
+                            <i class="fas fa-seedling me-1"></i>{{ plant.category.name }}
+                        </a>
+                    </p>
                     <p class="card-text">{{ plant.description }}</p>
+                    {% if plant.discount_price %}
+                    <p class="card-text ms-auto mt-auto"><del class="me-3">{{ plant.price }}
+                            €</del>{{ plant.discount_price }} €</p>
+                    {% else %}
                     <p class="card-text ms-auto mt-auto">{{ plant.price }} €</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        {% endfor %}
+        <div class="col-12 col-md-6 d-flex flex-column me-auto mt-auto">
+            <div class="mt-3">
+                <form class="form" action="{% url 'add_to_cart' plant.id %}" method="POST">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    <button class="btn btn-success" type="submit"><i class="fas fa-cart-plus me-1"></i>Add to Cart</button>
+                </form>
+            </div>
+            <div class="me-3 mt-3">
+                <a class="btn btn-success" href="{% url 'plants' %}"><i class="fas fa-arrow-left me-1"></i>Back to
+                    Plants</a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

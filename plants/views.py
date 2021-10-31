@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.db.models.functions import Coalesce
+from cart.forms import CartForm
 from .models import Plant
 
 
-def get_plants(request):
+def show_plants(request):
     """Return all plants."""
     plants = Plant.objects.all()
     sort = {'key': None, 'direction': None}
@@ -45,4 +46,16 @@ def get_plants(request):
         'sort': sort,
     }
     template = 'plants/plants.html'
+    return render(request, template, context)
+
+
+def plant_details(request, plant_id):
+    """Return details for a specific plant."""
+    plant = get_object_or_404(Plant, pk=plant_id)
+    form = CartForm()
+    context = {
+        'plant': plant,
+        'form': form,
+    }
+    template = 'plants/plant_details.html'
     return render(request, template, context)
