@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from django.db.models.functions import Coalesce
 from .models import Plant, Category
 
@@ -30,6 +31,10 @@ def get_plants(request):
                 plants = plants.filter(discount_price__isnull=False)
             else:
                 plants = plants.filter(category__filter_name=category)
+        if 'query' in request.GET:
+            query = request.GET['query']
+            plants = plants.filter(
+                Q(name__icontains=query) | Q(description__icontains=query))
 
     context = {
         'plants': plants,
