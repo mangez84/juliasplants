@@ -6,10 +6,7 @@ from .models import Plant, Category
 def get_plants(request):
     """Return all plants."""
     plants = Plant.objects.all()
-    sort = {
-        'key': None,
-        'direction': None,
-    }
+    sort = {'key': None, 'direction': None}
 
     if request.GET:
         if 'sort' in request.GET:
@@ -27,6 +24,12 @@ def get_plants(request):
                 else:
                     plants = plants.order_by(
                         Coalesce('discount_price', sort['key'])).reverse()
+        if 'category' in request.GET:
+            category = request.GET['category']
+            if category == 'discounted_plants':
+                plants = plants.filter(discount_price__isnull=False)
+            else:
+                plants = plants.filter(category__filter_name=category)
 
     context = {
         'plants': plants,
