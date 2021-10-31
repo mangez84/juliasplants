@@ -31,20 +31,31 @@
                 <option value="price_desc" {% if sort.key == 'price' and sort.direction == 'desc' %}selected{% endif %}>
                     Price (High to Low)
                 </option>
+                <option value="category_asc" {% if sort.key == 'category' and sort.direction == 'asc' %}selected{% endif %}>
+                    Category (A-Z)
+                </option>
+                <option value="category_desc" {% if sort.key == 'category' and sort.direction == 'desc' %}selected{% endif %}>
+                    Category (Z-A)
+                </option>
             </select>
         </div>
     </div>
     <div class="row">
         {% for plant in plants %}
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100">
+            <div class="card">
                 <a href="#">
                     <img src="{{ plant.image.url }}" class="card-img-top" alt="{{ plant.name }}">
                 </a>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ plant.name }}</h5>
                     <p class="card-text"><em>{{ plant.botanical_name }}</em></p>
-                    <p class="card-text">{{ plant.description }}</p>
+                    <p class="card-text">
+                        <a class="text-muted text-decoration-none"
+                            href="{% url 'plants' %}?category={{ plant.category.filter_name }}">
+                            <i class="fas fa-seedling me-1"></i>{{ plant.category.name }}
+                        </a>
+                    </p>
                     {% if plant.discount_price %}
                     <p class="card-text ms-auto mt-auto"><del class="me-3">{{ plant.price }}
                             €</del>{{ plant.discount_price }} €</p>

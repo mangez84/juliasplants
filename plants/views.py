@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Q
 from django.db.models.functions import Coalesce
-from .models import Plant, Category
+from .models import Plant
 
 
 def get_plants(request):
@@ -14,17 +14,21 @@ def get_plants(request):
             sort['key'] = request.GET['sort']
             sort['direction'] = request.GET['direction']
             if sort['direction'] == 'asc':
-                if sort['key'] == 'name':
-                    plants = plants.order_by(sort['key'])
-                else:
+                if sort['key'] == 'price':
                     plants = plants.order_by(
                         Coalesce('discount_price', sort['key']))
-            else:
-                if sort['key'] == 'name':
-                    plants = plants.order_by(sort['key']).reverse()
+                elif sort['key'] == 'category':
+                    plants = plants.order_by(f"{sort['key']}__name")
                 else:
+                    plants = plants.order_by(sort['key'])
+            else:
+                if sort['key'] == 'price':
                     plants = plants.order_by(
                         Coalesce('discount_price', sort['key'])).reverse()
+                elif sort['key'] == 'category':
+                    plants = plants.order_by(f"{sort['key']}__name").reverse()
+                else:
+                    plants = plants.order_by(sort['key']).reverse()
         if 'category' in request.GET:
             category = request.GET['category']
             if category == 'discounted_plants':
