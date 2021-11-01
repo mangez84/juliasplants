@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.db.models.functions import Coalesce
 from .forms import CartForm
 from plants.models import Plant
 
@@ -8,6 +7,7 @@ def show_cart(request):
     """Return the page for the shopping cart."""
     cart = request.session.get('cart', {})
     cart_items = []
+    cost = 0
     total_cost = 0
     for plant_id, quantity in cart.items():
         plant = get_object_or_404(Plant, pk=plant_id)
@@ -18,10 +18,12 @@ def show_cart(request):
                 price = plant.price
         else:
             price = plant.price
+        cost = quantity * price
         total_cost += quantity * price
         cart_items.append({
             'plant': plant,
             'quantity': quantity,
+            'cost': cost
         })
     context = {
         'cart_items': cart_items,
