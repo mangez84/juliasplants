@@ -5,6 +5,27 @@ from cart.forms import CartForm
 from .models import Plant
 
 
+def sort_plants(plants, sort):
+    """Sort the plants."""
+    if sort['direction'] == 'asc':
+        if sort['key'] == 'price':
+            plants = plants.order_by(
+                Coalesce('discount_price', sort['key']))
+        elif sort['key'] == 'category':
+            plants = plants.order_by(f"{sort['key']}__name")
+        else:
+            plants = plants.order_by(sort['key'])
+    else:
+        if sort['key'] == 'price':
+            plants = plants.order_by(
+                Coalesce('discount_price', sort['key'])).reverse()
+        elif sort['key'] == 'category':
+            plants = plants.order_by(f"{sort['key']}__name").reverse()
+        else:
+            plants = plants.order_by(sort['key']).reverse()
+    return plants
+
+
 def show_plants(request):
     """Return all plants."""
     plants = Plant.objects.all()
@@ -14,22 +35,7 @@ def show_plants(request):
         if 'sort' in request.GET:
             sort['key'] = request.GET['sort']
             sort['direction'] = request.GET['direction']
-            if sort['direction'] == 'asc':
-                if sort['key'] == 'price':
-                    plants = plants.order_by(
-                        Coalesce('discount_price', sort['key']))
-                elif sort['key'] == 'category':
-                    plants = plants.order_by(f"{sort['key']}__name")
-                else:
-                    plants = plants.order_by(sort['key'])
-            else:
-                if sort['key'] == 'price':
-                    plants = plants.order_by(
-                        Coalesce('discount_price', sort['key'])).reverse()
-                elif sort['key'] == 'category':
-                    plants = plants.order_by(f"{sort['key']}__name").reverse()
-                else:
-                    plants = plants.order_by(sort['key']).reverse()
+            plants = sort_plants(plants, sort)
         if 'category' in request.GET:
             category = request.GET['category']
             if category == 'discounted_plants':
