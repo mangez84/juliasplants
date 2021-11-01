@@ -2,7 +2,10 @@ from django import forms
 
 
 class CartForm(forms.Form):
-    quantity = forms.CharField(
+    quantity = forms.IntegerField(
         label='Quantity',
-        widget=forms.TextInput(attrs={'min': 1, 'max': 5, 'type': 'number'})
+        initial=1,
+        min_value=1,
+        max_value=20,
+        widget=forms.NumberInput()
     )
