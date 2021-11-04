@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.db.models.functions import Coalesce
-from cart.forms import CartForm
 from .models import Plant
 
 
@@ -58,10 +57,8 @@ def show_plants(request):
 def plant_details(request, plant_id):
     """Return details for a specific plant."""
     plant = get_object_or_404(Plant, pk=plant_id)
-    form = CartForm()
     context = {
         'plant': plant,
-        'form': form,
     }
     template = 'plants/plant_details.html'
     return render(request, template, context)

@@ -1,3 +1,5 @@
+// Listen for change event and sort the plants
+
 $("#sort-selector").change(function () {
     let currentURL = new URL(window.location);
     let selectedVal = $(this).val();

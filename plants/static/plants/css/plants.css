@@ -14,3 +14,9 @@ Tip was found on https://stackoverflow.com/a/54207386
 #sort-selector {
     flex: 0 1 25rem;
 }
+
+/* Allow inputs with type number to shrink but not to grow */
+
+input[type="number"] {
+    flex: 0 1 5rem;
+}
