@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib import messages
 from plants.models import Plant
 
@@ -7,7 +7,7 @@ def show_cart(request):
     """Return the page for the shopping cart."""
     cart = request.session.get('cart', {})
     cart_items = []
-    cost = 0
+    total = 0
     total_cost = 0
     if len(cart) > 0:
         for plant_id, quantity in cart.items():
@@ -19,12 +19,13 @@ def show_cart(request):
                     price = plant.price
             else:
                 price = plant.price
-            cost = quantity * price
+            total = quantity * price
             total_cost += quantity * price
             cart_items.append({
                 'plant': plant,
                 'quantity': quantity,
-                'cost': cost
+                'price': price,
+                'total': total,
             })
     context = {
         'cart_items': cart_items,
@@ -51,3 +52,33 @@ def add_to_cart(request, plant_id):
         request.session['cart'] = cart
         return redirect('plant_details', plant_id=plant.id)
     return redirect('plant_details', plant_id=plant.id)
+
+
+def edit_cart(request):
+    """Edit the cart with updated quantities."""
+    if request.method == 'POST':
+        cart = request.session.get('cart', {})
+        print(request.POST)
+        for plant_id in cart:
+            new_quantity = f'quantity-{plant_id}'
+            quantity = int(request.POST.get(new_quantity))
+            cart[plant_id] = quantity
+        request.session['cart'] = cart
+        messages.success(request, 'Cart was successfully updated.')
+        return redirect('show_cart')
+    return redirect('show_cart')
+
+
+def del_from_cart(request, plant_id):
+    """Delete a plant from the cart."""
+    if request.method == 'POST':
+        plant = get_object_or_404(Plant, pk=plant_id)
+        cart = request.session.get('cart', {})
+        cart.pop(plant_id)
+        request.session['cart'] = cart
+        messages.success(
+            request,
+            f'{plant.name} was successfully deleted from the cart.'
+        )
+        return HttpResponse(status=200)
+    return redirect('show_cart')
