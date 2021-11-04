@@ -1,0 +1,22 @@
+<div class="position-fixed top-25 start-50 translate-middle-x p-3" style="z-index: 11">
+    <div id="message-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        {% if message.level == 25 %}
+        <div class="toast-header bg-success text-white">
+            <strong class="me-auto">Success!</strong>
+        {% elif message.level == 30 %}
+        <div class="toast-header bg-warning text-white">
+            <strong class="me-auto">Warning!</strong>
+        {% elif message.level == 40 %}
+        <div class="toast-header bg-danger text-white">
+            <strong class="me-auto">Error!</strong>
+        {% else %}
+        <div class="toast-header bg-info text-white">
+            <strong class="me-auto">Alert!</strong>
+        {% endif %}
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{ message }}
+        </div>
+    </div>
+</div>
