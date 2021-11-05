@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib import messages
+import stripe
+from cart.views import get_cart_items
 from .models import Order, OrderItem
 from .forms import OrderForm
-from cart.views import get_cart_items
-import stripe
 
 
 def checkout(request):
@@ -18,7 +18,8 @@ def checkout(request):
         if form.is_valid():
             order = form.save(commit=False)
             order.total_cost = total_cost
-            order.stripe_pid = 'Test'
+            order.stripe_pid = (
+                request.POST.get('client_secret').split('_secret')[0])
             order.save()
             for cart_item in cart_items:
                 order_item = OrderItem(
@@ -42,7 +43,7 @@ def checkout(request):
         form = OrderForm(initial={
             'first_name': 'Test',
             'last_name': 'Test',
-            'email': 'Test',
+            'email': 'test@test.com',
             'address': 'Test',
             'city': 'Test',
             'postcode': 'Test',
