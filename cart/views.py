@@ -58,7 +58,6 @@ def edit_cart(request):
     """Edit the cart with updated quantities."""
     if request.method == 'POST':
         cart = request.session.get('cart', {})
-        print(request.POST)
         for plant_id in cart:
             new_quantity = f'quantity-{plant_id}'
             quantity = int(request.POST.get(new_quantity))

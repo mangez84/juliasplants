@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'home',
     'plants',
     'cart',
+    'checkout',
 ]
 
 MIDDLEWARE = [
