@@ -16,7 +16,8 @@ class Order(models.Model):
     address = models.CharField(max_length=100, null=False, blank=False)
     city = models.CharField(max_length=50, null=False, blank=False)
     postcode = models.CharField(max_length=20, null=False, blank=False)
-    country = CountryField(blank_label='Country *', null=False, blank=False)
+    country = CountryField(
+        blank_label='Select Country', null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     total_cost = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)

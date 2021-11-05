@@ -3,8 +3,8 @@ from django.contrib import messages
 from plants.models import Plant
 
 
-def show_cart(request):
-    """Return the page for the shopping cart."""
+def get_cart_items(request):
+    """Fetch the cart from the session."""
     cart = request.session.get('cart', {})
     cart_items = []
     total = 0
@@ -27,6 +27,12 @@ def show_cart(request):
                 'price': price,
                 'total': total,
             })
+    return cart_items, total_cost
+
+
+def show_cart(request):
+    """Return the page for the shopping cart."""
+    cart_items, total_cost = get_cart_items(request)
     context = {
         'cart_items': cart_items,
         'total_cost': total_cost,

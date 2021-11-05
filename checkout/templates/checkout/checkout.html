@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block css %}
 {{ block.super }}
@@ -13,10 +14,14 @@
 {% block content %}
 <div class="container d-flex flex-column flex-wrap justify-content-center flex-fill">
     <div class="row">
-        <div class="col-12">
-            {% if request.session.cart %}
-            <form class="form" id="form-edit-cart" action="{% url 'edit_cart' %}" method="POST">
+        <div class="col12 col-lg-6">
+            <form class="form" id="form-edit-cart" action="#" method="POST">
                 {% csrf_token %}
+                {{ form | crispy }}
+            </form>
+        </div>
+        <div class="col-12 col-lg-6">
+            {% if request.session.cart %}
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -31,17 +36,9 @@
                             {% for cart_item in cart_items %}
                             <tr>
                                 <td>{{ cart_item.plant.name }}</td>
-                                <td>
-                                    <input type="number" id="quantity-{{ cart_item.plant.id }}"
-                                        name="quantity-{{ cart_item.plant.id }}" value="{{ cart_item.quantity }}"
-                                        min="1" max="20" class="form-control form-edit-quantity" required>
-                                </td>
+                                <td>{{ cart_item.quantity }}</td>
                                 <td>{{ cart_item.price }}</td>
                                 <td>{{ cart_item.total }}</td>
-                                <td>
-                                    <button id="delete-{{ cart_item.plant.id }}"
-                                        class="btn btn-success form-delete-item" type="button">Remove</button>
-                                </td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -51,11 +48,10 @@
                     <p>Total Cost {{ total_cost }}</p>
                 </div>
                 <div class="d-flex flex-wrap justify-content-end">
-                    <a class="btn btn-success" href="{% url 'plants' %}"><i class="fas fa-arrow-left me-1"></i>Back to
-                        Plants</a>
-                    <a class="btn btn-success ms-3" href="#"><i class="fas fa-arrow-left me-1"></i>Checkout</a>
+                    <a class="btn btn-success" href="{% url 'show_cart' %}"><i class="fas fa-arrow-left me-1"></i>Back to
+                        Cart</a>
+                    <a class="btn btn-success ms-3" href="#"><i class="fas fa-lock me-1"></i>Pay</a>
                 </div>
-            </form>
             {% else %}
             <p>No plants in cart! Start shopping!</p>
             {% endif %}
