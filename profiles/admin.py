@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import UserProfile
 
-# Register your models here.
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'address', 'city', 'postcode', 'country',)
+    ordering = ('user',)
+
+
+admin.site.register(UserProfile, ProfileAdmin)
