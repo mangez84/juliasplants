@@ -3,6 +3,8 @@ from django.conf import settings
 from django.contrib import messages
 import stripe
 from cart.views import get_cart_items
+from profiles.models import UserProfile
+from profiles.views import save_profile
 from .models import Order, OrderItem
 from .forms import OrderForm
 
@@ -17,6 +19,11 @@ def checkout(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
+            if request.user.is_authenticated:
+                try:
+                    profile = UserProfile.objects.get(user=request.user)
+                except UserProfile.DoesNotExist:
+                    save_profile(request, form)
             order.total_cost = total_cost
             order.stripe_pid = (
                 request.POST.get('client_secret').split('_secret')[0])
@@ -29,6 +36,10 @@ def checkout(request):
                     total=cart_item['total'],
                 )
                 order_item.save()
+            del request.session['cart']
+        else:
+            messages.error(
+                request, 'Checkout failed. Please ensure form is valid.')
         return redirect('show_cart')
 
     cart_items, total_cost = get_cart_items(request)
@@ -40,16 +51,22 @@ def checkout(request):
     )
 
     if request.user.is_authenticated:
-        form = OrderForm(initial={
-            'first_name': 'Test',
-            'last_name': 'Test',
-            'email': 'test@test.com',
-            'address': 'Test',
-            'city': 'Test',
-            'postcode': 'Test',
-            'country': 'SE',
-            'phone_number': 'Test',
-        })
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+            form = OrderForm(initial={
+                'first_name': profile.user.first_name,
+                'last_name': profile.user.last_name,
+                'email': profile.user.email,
+                'address': profile.address,
+                'city': profile.city,
+                'postcode': profile.postcode,
+                'country': profile.country,
+                'phone_number': profile.phone_number,
+            })
+        except UserProfile.DoesNotExist:
+            form = OrderForm(initial={
+                'email': request.user.email,
+            })
     else:
         form = OrderForm()
 
