@@ -2,9 +2,11 @@ import uuid
 from django.db import models
 from django_countries.fields import CountryField
 from plants.models import Plant
+from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    """A model to store orders."""
     order_uuid = models.UUIDField(
         primary_key=False, default=uuid.uuid4, editable=False,
         null=False, blank=False
@@ -23,12 +25,16 @@ class Order(models.Model):
         max_digits=10, decimal_places=2, null=False, default=0)
     stripe_pid = models.CharField(
         max_length=254, null=False, blank=False, default='')
+    profile = models.ForeignKey(
+        UserProfile, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='orders')
 
     def __str__(self):
         return str(self.order_uuid)
 
 
 class OrderItem(models.Model):
+    """A model to store individual order items with quantity."""
     quantity = models.IntegerField(null=False, blank=False, default=0)
     total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
