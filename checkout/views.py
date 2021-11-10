@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.contrib import messages
 import stripe
@@ -37,10 +37,11 @@ def checkout(request):
                 )
                 order_item.save()
             del request.session['cart']
+            return redirect('checkout_confirm', order_uuid=order.order_uuid)
         else:
             messages.error(
                 request, 'Checkout failed. Please ensure form is valid.')
-        return redirect('show_cart')
+            return redirect('checkout')
 
     cart_items, total_cost = get_cart_items(request)
     stripe_total = round(total_cost * 100)
@@ -78,4 +79,14 @@ def checkout(request):
         'client_secret': intent.client_secret,
     }
     template = 'checkout/checkout.html'
+    return render(request, template, context)
+
+
+def checkout_confirm(request, order_uuid):
+    """Show the user an order confirmation"""
+    order = get_object_or_404(Order, order_uuid=order_uuid)
+    context = {
+        'order': order,
+    }
+    template = 'checkout/checkout_confirm.html'
     return render(request, template, context)
