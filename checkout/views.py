@@ -22,6 +22,8 @@ def checkout(request):
             if request.user.is_authenticated:
                 try:
                     profile = UserProfile.objects.get(user=request.user)
+                    order.profile = profile
+                    order.save()
                 except UserProfile.DoesNotExist:
                     save_profile(request, form)
             order.total_cost = total_cost
