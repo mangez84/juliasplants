@@ -15,7 +15,7 @@ def save_profile(request, form):
     )
 
 
-def profile(request):
+def show_profile(request):
     """Return the profile page."""
     user = request.user
     profile = get_object_or_404(UserProfile, user=user)

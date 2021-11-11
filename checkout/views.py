@@ -40,10 +40,10 @@ def checkout(request):
                 order_item.save()
             del request.session['cart']
             return redirect('checkout_confirm', order_uuid=order.order_uuid)
-        else:
-            messages.error(
-                request, 'Checkout failed. Please ensure form is valid.')
-            return redirect('checkout')
+
+        messages.error(
+            request, 'Checkout failed. Please ensure form is valid.')
+        return redirect('checkout')
 
     cart_items, total_cost = get_cart_items(request)
     stripe_total = round(total_cost * 100)
