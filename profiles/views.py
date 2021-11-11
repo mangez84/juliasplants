@@ -21,10 +21,12 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=user)
     user_form = UserForm(instance=user)
     profile_form = UserProfileForm(instance=profile)
+    orders = profile.orders.all()
 
     context = {
         'user_form': user_form,
-        'profile_form': profile_form
+        'profile_form': profile_form,
+        'orders': orders
     }
     template = 'profiles/profile.html'
     return render(request, template, context)
