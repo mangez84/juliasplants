@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import UserProfile
+from .forms import UserForm, UserProfileForm
 
 
 def save_profile(request, form):
-    """Save profile information"""
+    """Save profile information."""
     UserProfile.objects.create(
         user=request.user,
         address=form.cleaned_data['address'],
@@ -16,5 +17,14 @@ def save_profile(request, form):
 
 def profile(request):
     """Return the profile page."""
+    user = request.user
+    profile = get_object_or_404(UserProfile, user=user)
+    user_form = UserForm(instance=user)
+    profile_form = UserProfileForm(instance=profile)
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
     template = 'profiles/profile.html'
-    return render(request, template)
+    return render(request, template, context)

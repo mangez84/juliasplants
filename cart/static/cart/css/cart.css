@@ -1,7 +1,0 @@
-/* Flexbox settings for the cart overview */
-
-.cart-image {
-    width: 0 1 10rem;
-    height: 10vh;
-    object-fit: cover;
-}

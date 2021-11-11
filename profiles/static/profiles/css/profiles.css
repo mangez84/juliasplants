@@ -1,0 +1,5 @@
+/* Flexbox settings for buttons */
+
+button {
+    flex: 0 1 10rem;
+}
