@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import UserProfile
+from .models import UserProfile, UserProfileComment
 from .forms import UserForm, UserProfileForm, UserProfileCommentForm
 
 
@@ -46,11 +46,36 @@ def edit_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Details successfully updated.')
+            messages.success(
+                request,
+                'User details were successfully updated.')
             return redirect('show_profile')
         messages.error(
             request,
-            'Could not update details. Please ensure form is valid.')
+            'Could not update user details. Please ensure form is valid.')
+        return redirect('show_profile')
+
+    return redirect('show_profile')
+
+
+def add_comment(request):
+    """Add user comments and ratings."""
+    if request.method == 'POST':
+        user = request.user
+        profile = get_object_or_404(UserProfile, user=user)
+        comment_form = UserProfileCommentForm(request.POST)
+        if comment_form.is_valid():
+            UserProfileComment.objects.create(
+                title=comment_form.cleaned_data['title'],
+                comment=comment_form.cleaned_data['comment'],
+                rating=comment_form.cleaned_data['rating'],
+                profile=profile,
+            )
+            messages.success(request, 'Thank you for reviewing us!')
+            return redirect('show_profile')
+        messages.error(
+            request,
+            'Could not send the review. Please ensure form is valid.')
         return redirect('show_profile')
 
     return redirect('show_profile')

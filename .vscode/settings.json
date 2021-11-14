@@ -10,7 +10,8 @@
       "--load-plugins",
       "pylint_django",
       "--django-settings-module=juliasplants.settings",
-      "--disable=C0111"
+      "--disable=C0111",
+      "--disable=W0223"
    ],
    "cornflakes.linter.executablePath": "/home/gitpod/.pyenv/shims/flake8",
    "files.exclude": {

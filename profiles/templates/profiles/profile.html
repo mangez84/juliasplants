@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-center">Review Us</h2>
-                    <form action="#" method="POST">
+                    <form action="{% url 'add_comment' %}" method="POST">
                         {% csrf_token %}
                         {{ comment_form | crispy }}
                         <div class="d-flex justify-content-center">
