@@ -37,7 +37,7 @@
                     <p>Order Date</p>
                 </div>
                 <div class="col-12 col-md-6">
-                    <p>{{ order.date }}</p>
+                    <p>{{ order.date | date:"d/m/y P" }}</p>
                 </div>
             </div>
             {% for orderitem in order.orderitems.all %}
