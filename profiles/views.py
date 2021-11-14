@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from .models import UserProfile
 from .forms import UserForm, UserProfileForm, UserProfileCommentForm
 
@@ -19,8 +20,8 @@ def show_profile(request):
     """Return the profile page."""
     user = request.user
     profile = get_object_or_404(UserProfile, user=user)
-    user_form = UserForm(instance=user)
-    profile_form = UserProfileForm(instance=profile)
+    user_form = UserForm(instance=user, prefix='user_form')
+    profile_form = UserProfileForm(instance=profile, prefix='profile_form')
     comment_form = UserProfileCommentForm()
     orders = profile.orders.all()
 
@@ -32,3 +33,24 @@ def show_profile(request):
     }
     template = 'profiles/profile.html'
     return render(request, template, context)
+
+
+def edit_profile(request):
+    """Edit profile information."""
+    if request.method == 'POST':
+        user = request.user
+        profile = get_object_or_404(UserProfile, user=user)
+        user_form = UserForm(request.POST, instance=user, prefix='user_form')
+        profile_form = UserProfileForm(
+            request.POST, instance=profile, prefix='profile_form')
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Details successfully updated.')
+            return redirect('show_profile')
+        messages.error(
+            request,
+            'Could not update details. Please ensure form is valid.')
+        return redirect('show_profile')
+
+    return redirect('show_profile')
