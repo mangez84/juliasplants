@@ -31,6 +31,10 @@ class UserProfileComment(models.Model):
     rating = models.IntegerField(
         null=False, blank=False, default=1,
         validators=[MinValueValidator(1), MaxValueValidator(5)])
+    profile = models.ForeignKey(
+        UserProfile, null=False, blank=False, on_delete=models.CASCADE,
+        related_name='comments'
+    )
 
     def __str__(self):
         return str(self.title)
