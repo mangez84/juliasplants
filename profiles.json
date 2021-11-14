@@ -1,1 +1,0 @@
-[{"model": "profiles.userprofile", "pk": 2, "fields": {"user": 1, "address": "sdsds road", "city": "sds", "postcode": "232345", "country": "SE", "phone_number": "232323"}}]

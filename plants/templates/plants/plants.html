@@ -31,10 +31,12 @@
                 <option value="price_desc" {% if sort.key == 'price' and sort.direction == 'desc' %}selected{% endif %}>
                     Price (High to Low)
                 </option>
-                <option value="category_asc" {% if sort.key == 'category' and sort.direction == 'asc' %}selected{% endif %}>
+                <option value="category_asc"
+                    {% if sort.key == 'category' and sort.direction == 'asc' %}selected{% endif %}>
                     Category (A-Z)
                 </option>
-                <option value="category_desc" {% if sort.key == 'category' and sort.direction == 'desc' %}selected{% endif %}>
+                <option value="category_desc"
+                    {% if sort.key == 'category' and sort.direction == 'desc' %}selected{% endif %}>
                     Category (Z-A)
                 </option>
             </select>
@@ -68,6 +70,24 @@
         {% endfor %}
     </div>
 </div>
+{% endblock %}
+
+{% block footer %}
+{% if comments %}
+<hr>
+<div class="container">
+    <div class="row">
+        {% for comment in comments %}
+        <div class="col-12 col-md-4 d-flex flex-column">
+            <p>{{ comment.rating }}</p>
+            <p>{{ comment.title }}</p>
+            <p>{{ comment.comment }}</p>
+            <p>{{ comment.profile.user.first_name }} {{ comment.profile.user.last_name }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block js %}

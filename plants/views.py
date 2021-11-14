@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.db.models.functions import Coalesce
+from profiles.views import get_comments
 from .models import Plant
 
 
@@ -28,6 +29,7 @@ def sort_plants(plants, sort):
 def show_plants(request):
     """Return all plants."""
     plants = Plant.objects.all()
+    comments = get_comments(request)
     sort = {'key': None, 'direction': None}
 
     if request.GET:
@@ -48,6 +50,7 @@ def show_plants(request):
 
     context = {
         'plants': plants,
+        'comments': comments,
         'sort': sort,
     }
     template = 'plants/plants.html'
