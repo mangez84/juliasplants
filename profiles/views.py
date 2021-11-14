@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import UserProfile, UserProfileComment
@@ -48,11 +49,11 @@ def edit_profile(request):
             profile_form.save()
             messages.success(
                 request,
-                'User details were successfully updated.')
+                'The user information has been updated.')
             return redirect('show_profile')
         messages.error(
             request,
-            'Could not update user details. Please ensure form is valid.')
+            'Could not update user information. Please ensure form is valid.')
         return redirect('show_profile')
 
     return redirect('show_profile')
@@ -79,3 +80,22 @@ def add_comment(request):
         return redirect('show_profile')
 
     return redirect('show_profile')
+
+
+def get_comments(request):
+    """Return a number of random user comments."""
+    if request.method == 'GET':
+        try:
+            comments = list(UserProfileComment.objects.all())
+            num_comments = len(comments)
+            if num_comments == 0:
+                random_comments = None
+            if 1 <= num_comments < 3:
+                random_comments = random.sample(comments, num_comments)
+            if num_comments >= 3:
+                random_comments = random.sample(comments, 3)
+        except ValueError:
+            random_comments = None
+
+        return random_comments
+    return redirect('home')
