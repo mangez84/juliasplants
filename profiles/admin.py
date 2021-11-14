@@ -9,7 +9,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 
 class UserProfileCommentAdmin(admin.ModelAdmin):
-    """Display user profile comments on the admin site."""
+    """Display user comments on the admin site."""
     list_display = ('title', 'comment', 'rating', 'profile',)
     ordering = ('profile',)
 

@@ -1,5 +1,5 @@
 /* Flexbox settings for buttons */
 
-button {
+.btn-submit {
     flex: 0 1 10rem;
 }

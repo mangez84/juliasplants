@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import UserProfile
-from .forms import UserForm, UserProfileForm
+from .forms import UserForm, UserProfileForm, UserProfileCommentForm
 
 
 def save_profile(request, form):
@@ -21,11 +21,13 @@ def show_profile(request):
     profile = get_object_or_404(UserProfile, user=user)
     user_form = UserForm(instance=user)
     profile_form = UserProfileForm(instance=profile)
+    comment_form = UserProfileCommentForm()
     orders = profile.orders.all()
 
     context = {
         'user_form': user_form,
         'profile_form': profile_form,
+        'comment_form': comment_form,
         'orders': orders
     }
     template = 'profiles/profile.html'
