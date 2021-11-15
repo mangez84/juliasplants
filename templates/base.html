@@ -68,6 +68,7 @@
                         <li class="nav-item dropdown ms-1 ms-lg-auto">
                             <a class="nav-link" href="#" id="navbar-user" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false"><i class="fas fa-user fa-lg"></i>
+                                <span class="sr-only">My Profile</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbar-user">
                                 {% if request.user.is_authenticated %}
@@ -93,13 +94,16 @@
                                     </span>
                                     {% endif %}
                                 </i>
+                                <span class="sr-only">Shopping Cart</span>
                             </a>
                         </li>
                     </ul>
                     <form class="d-flex" method="GET" action="{% url 'plants' %}">
                         <input class="form-control me-2" type="search" name="query" placeholder="Search Plants"
                             aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i>
+                            <span class="sr-only">Search Button</span>
+                        </button>
                     </form>
                 </div>
             </div>
