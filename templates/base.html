@@ -62,7 +62,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"
+                            <a class="nav-link {% if request.resolver_match.url_name == 'show_blog_posts' %}active{% endif %}"
                                 aria-current="page" href="{% url 'show_blog_posts' %}">Blog</a>
                         </li>
                         <li class="nav-item dropdown ms-1 ms-lg-auto">

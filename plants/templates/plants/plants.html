@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load range_tag %}
 
 {% block css %}
 {{ block.super }}
@@ -72,23 +73,28 @@
 </div>
 {% endblock %}
 
-{% block footer %}
 {% if comments %}
+{% block footer %}
 <hr>
 <div class="container">
     <div class="row">
         {% for comment in comments %}
         <div class="col-12 col-md-4 d-flex flex-column">
-            <p>{{ comment.rating }}</p>
-            <p>{{ comment.title }}</p>
+            <p>
+                {% for i in 0|range:comment.rating %}
+                <i class="fas fa-star" aria-hidden="true"></i>
+                {% endfor %}
+                <span class="sr-only">User Rating: {{ comment.rating }} stars.</span>
+            </p>
+            <p><strong>{{ comment.title }}</strong></p>
             <p>{{ comment.comment }}</p>
-            <p>{{ comment.profile.user.first_name }} {{ comment.profile.user.last_name }}</p>
+            <p><em>{{ comment.profile.user.first_name }} {{ comment.profile.user.last_name }}</em></p>
         </div>
         {% endfor %}
     </div>
 </div>
-{% endif %}
 {% endblock %}
+{% endif %}
 
 {% block js %}
 {{ block.super }}
