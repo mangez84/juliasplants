@@ -46,7 +46,7 @@
                     <p>Plant</p>
                 </div>
                 <div class="col-12 col-md-6">
-                    <p>{{ orderitem.plant.name }} x {{ orderitem.quantity }} = {{ orderitem.total }}</p>
+                    <p>{{ orderitem.plant.name }} x {{ orderitem.quantity }} = {{ orderitem.total }} €</p>
                 </div>
             </div>
             {% endfor %}
@@ -55,7 +55,7 @@
                     <p>Total Cost</p>
                 </div>
                 <div class="col12 col-md-6">
-                    <p>{{ order.total_cost }}</p>
+                    <p>{{ order.total_cost }} €</p>
                 </div>
             </div>
         </div>

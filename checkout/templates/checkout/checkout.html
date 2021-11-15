@@ -30,15 +30,15 @@
                         <tr>
                             <td>{{ cart_item.plant.name }}</td>
                             <td>{{ cart_item.quantity }}</td>
-                            <td>{{ cart_item.price }}</td>
-                            <td>{{ cart_item.total }}</td>
+                            <td>{{ cart_item.price }} €</td>
+                            <td>{{ cart_item.total }} €</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             </div>
             <div class="d-flex justify-content-end">
-                <p>Total Cost {{ total_cost }}</p>
+                <p>Total Cost {{ total_cost }} €</p>
             </div>
             {% else %}
             <p>No plants in cart! Start shopping!</p>
