@@ -24,3 +24,14 @@ section {
 .badge {
     font-size: 0.5em;
 }
+
+/*
+Override Bootstrap settings for card images
+Tip was found on https://stackoverflow.com/a/54207386
+*/
+
+.card-img-top {
+    width: 100%;
+    height: 25vh;
+    object-fit: cover;
+}
