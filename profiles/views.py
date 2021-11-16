@@ -66,12 +66,9 @@ def add_comment(request):
         profile = get_object_or_404(UserProfile, user=user)
         comment_form = UserProfileCommentForm(request.POST)
         if comment_form.is_valid():
-            UserProfileComment.objects.create(
-                title=comment_form.cleaned_data['title'],
-                comment=comment_form.cleaned_data['comment'],
-                rating=comment_form.cleaned_data['rating'],
-                profile=profile,
-            )
+            valid_form = comment_form.save(commit=False)
+            valid_form.profile = profile
+            valid_form.save()
             messages.success(request, 'Thank you for reviewing us!')
             return redirect('show_profile')
         messages.error(

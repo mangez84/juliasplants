@@ -83,8 +83,9 @@
 </div>
 {% endblock %}
 
-{% if comments %}
+
 {% block footer %}
+{% if comments %}
 <hr>
 <div class="container">
     <div class="row">
@@ -103,8 +104,8 @@
         {% endfor %}
     </div>
 </div>
-{% endblock %}
 {% endif %}
+{% endblock %}
 
 {% block js %}
 {{ block.super }}
