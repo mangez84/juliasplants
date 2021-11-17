@@ -6,7 +6,7 @@ from .forms import UserForm, UserProfileForm, UserProfileCommentForm
 
 
 def save_profile(request, form):
-    """Save profile information."""
+    """Save profile information after checkout."""
     UserProfile.objects.create(
         user=request.user,
         address=form.cleaned_data['address'],
@@ -20,7 +20,20 @@ def save_profile(request, form):
 def show_profile(request):
     """Return the profile page."""
     user = request.user
-    profile = get_object_or_404(UserProfile, user=user)
+
+    try:
+        profile = UserProfile.objects.get(user__username=user)
+    except UserProfile.DoesNotExist:
+        UserProfile.objects.create(
+            user=request.user,
+            address='',
+            city='',
+            postcode='',
+            country='',
+            phone_number='',
+        )
+        profile = UserProfile.objects.get(user__username=user)
+
     user_form = UserForm(instance=user, prefix='user_form')
     profile_form = UserProfileForm(instance=profile, prefix='profile_form')
     comment_form = UserProfileCommentForm()
