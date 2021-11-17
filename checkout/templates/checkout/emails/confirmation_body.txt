@@ -1,0 +1,21 @@
+Hello {{ order.profile.user.get_full_name }}!
+
+This is a confirmation of your order at Julia's Plant's.
+
+Your order information is below:
+
+Order ID: {{ order.order_uuid }}
+Order Date: {{ order.date | date:"d/m/y P" }}
+Order Total: {{ order.total_cost }} €
+
+Your order will be shipped to {{ order.address }} in {{ order.city }}, {{ order.country.name }}.
+
+We've got your phone number on file as {{ order.phone_number }}.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your order!
+
+Sincerely,
+
+Julia's Plants

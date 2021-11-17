@@ -1,12 +1,42 @@
-from django.shortcuts import render, redirect, get_object_or_404
+import json
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.conf import settings
 from django.contrib import messages
+from django.views.decorators.http import require_POST
 import stripe
 from cart.views import get_cart_items
 from profiles.models import UserProfile
 from profiles.views import save_profile
 from .models import Order, OrderItem
 from .forms import OrderForm
+
+
+@require_POST
+def modify_stripe_data(request):
+    """
+    Modify the Stripe payment intent.
+    Code was copied from:
+    https://github.com/ckz8780/boutique_ado_v1/tree/master/checkout
+    Minor changes have been made to the code.
+    """
+    try:
+        cart_items, total_cost = get_cart_items(request)
+        for cart_item in cart_items:
+            cart_item['plant'] = cart_item['plant'].id
+            cart_item['price'] = str(cart_item['price'])
+            cart_item['total'] = str(cart_item['total'])
+        stripe_pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(stripe_pid, metadata={
+            'cart': json.dumps(cart_items),
+            'total_cost': total_cost,
+            'user': request.user,
+        })
+        return HttpResponse(status=200)
+    except stripe.error.StripeError as error:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later')
+        return HttpResponse(content=error, status=400)
 
 
 def checkout(request):

@@ -60,7 +60,7 @@ form.addEventListener('submit', function (ev) {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
     };
-    let url = '/checkout/';
+    let url = '/checkout/modify_stripe_data/';
     $.post(url, data).done(function () {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -99,8 +99,6 @@ form.addEventListener('submit', function (ev) {
                     </span>
                     <span>${result.error.message}</span>`;
                 $(errorDiv).html(html);
-                $('#payment-form').fadeToggle(100);
-                $('#loading-overlay').fadeToggle(100);
                 card.update({
                     'disabled': false
                 });

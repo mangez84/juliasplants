@@ -1,0 +1,1 @@
+Julia's Plants Confirmation for Order ID {{ order.order_uuid }}
