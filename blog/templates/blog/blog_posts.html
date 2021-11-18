@@ -13,7 +13,7 @@
 <div class="container d-flex flex-column flex-wrap flex-fill">
     <div class="row">
         {% for blog_post in blog_posts %}
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-5">
             <div class="card">
                 <a class="text-decoration-none" href="{% url 'blog_post_details' blog_post.id %}">
                     <img src="{{ blog_post.plant.image.url }}" class="card-img-top" alt="{{ blog_post.plant.name }}">

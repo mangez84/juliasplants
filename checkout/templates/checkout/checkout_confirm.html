@@ -7,102 +7,79 @@
 {% endblock %}
 
 {% block heading %}
-<h1>Thank You</h1>
+<h1>Thank You!</h1>
 {% endblock %}
 
 {% block content %}
 <div class="container d-flex flex-column flex-wrap justify-content-center flex-fill">
     <div class="row">
-        <div class="col-12 d-flex justify-content-center mb-5">
-            <p>An order confirmation will be sent to {{ order.email }}</p>
+        <div class="col-12 my-5">
+            <p>An order confirmation will be sent to {{ order.email }}.</p>
         </div>
     </div>
     <div class="row">
         <div class="col12 col-md-6">
             <div class="row">
-                <div class="col-12 d-flex justify-content-center">
+                <div class="col-12 my-3">
                     <h2>Order Summary</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <p>Order ID</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    {{ order.order_uuid }}
+                <div class="col-12">
+                    <p><strong>Order ID: </strong>{{ order.order_uuid }}</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <p>Order Date</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <p>{{ order.date | date:"d/m/y P" }}</p>
+                <div class="col-12">
+                    <p><strong>Order Date: </strong>{{ order.date | date:"d/m/y P" }}</p>
                 </div>
             </div>
             {% for orderitem in order.orderitems.all %}
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <p>Plant</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <p>{{ orderitem.plant.name }} x {{ orderitem.quantity }} = {{ orderitem.total }} €</p>
+                <div class="col-12">
+                    <p><strong>Plant: </strong>
+                        {{ orderitem.plant.name }} x {{ orderitem.quantity }} = {{ orderitem.total }} €
+                    </p>
                 </div>
             </div>
             {% endfor %}
             <div class="row">
-                <div class="col12 col-md-6">
-                    <p>Total Cost</p>
-                </div>
-                <div class="col12 col-md-6">
-                    <p>{{ order.total_cost }} €</p>
+                <div class="col12">
+                    <p><strong>Total Cost: </strong>{{ order.total_cost }} €</p>
                 </div>
             </div>
         </div>
         <div class="col12 col-md-6">
             <div class="row">
-                <div class="col-12 d-flex justify-content-center">
+                <div class="col-12 my-3">
                     <h2>Shipping Details</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <p>Name</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <p>{{ order.first_name }} {{ order.last_name }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <p>Address</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <p>{{ order.address }}</p>
+                <div class="col-12">
+                    <p><strong>Name: </strong>
+                        {{ order.profile.user.get_full_name }}
+                    </p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <p>City</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <p>{{ order.city }}</p>
+                <div class="col-12">
+                    <p><strong>Address: </strong>{{ order.address }}</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <p>Postcode</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <p>{{ order.postcode }}</p>
+                <div class="col-12">
+                    <p><strong>City: </strong>{{ order.city }}</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <p>Country</p>
+                <div class="col-12">
+                    <p><strong>Postcode: </strong>{{ order.postcode }}</p>
                 </div>
-                <div class="col-12 col-md-6">
-                    <p>{{ order.country.name }}</p>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p><strong>Country: </strong>{{ order.country.name }}</p>
                 </div>
             </div>
         </div>
