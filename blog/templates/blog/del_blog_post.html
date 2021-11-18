@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+{{ block.super }}
+{% endblock %}
+
+{% block heading %}
+<h1>Delete Blog Post</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column flex-wrap justify-content-center flex-fill">
+    <div class="row mb-3">
+        <div class="col-12 d-flex flex-column">
+            <form action="{% url 'del_blog_post' blog_post.id %}" method="POST">
+                {% csrf_token %}
+                <p class="text-center">Are you sure you want to delete {{ blog_post.title }}?</p>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <a href="{% url 'show_blog_posts' %}" class="btn btn-danger me-3 mt-3">Cancel</a>
+                    <button class="btn btn-success btn-submit mt-3" type="submit">Delete Blog Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
