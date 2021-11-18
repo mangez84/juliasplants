@@ -4,9 +4,7 @@
 
 We have a wide selection of high quality plants for sale.
 
-Create an account and get a 25% discount on your first purchase!
-
-With a registered account, you get access to additional discounts on selected plants!
+Create an account and get access to discounts on selected plants!
 
 Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 

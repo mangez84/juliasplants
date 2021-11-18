@@ -13,7 +13,7 @@
 {% block content %}
 <div class="container d-flex flex-column flex-wrap justify-content-center flex-fill">
     <div class="row">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6 my-3">
             {% if request.session.cart %}
             <div class="table-responsive">
                 <table class="table">
@@ -44,7 +44,7 @@
             <p>No plants in cart! Start shopping!</p>
             {% endif %}
         </div>
-        <div class="col12 col-lg-6">
+        <div class="col12 col-lg-6 my-3">
             <form id="form-checkout" class="form" action="{% url 'checkout' %}" method="POST">
                 {% csrf_token %}
                 {{ form | crispy }}
