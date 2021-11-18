@@ -1,13 +1,20 @@
 import random
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import get_user_model
 from django.contrib import messages
 from .models import UserProfile, UserProfileComment
 from .forms import UserForm, UserProfileForm, UserProfileCommentForm
 
+User = get_user_model()
+
 
 def save_profile(request, form):
     """Save profile information after checkout."""
-    UserProfile.objects.create(
+    user = User.objects.get(pk=request.user.id)
+    user.first_name = form.cleaned_data['first_name']
+    user.last_name = form.cleaned_data['last_name']
+    user.save()
+    profile = UserProfile.objects.create(
         user=request.user,
         address=form.cleaned_data['address'],
         city=form.cleaned_data['city'],
@@ -15,6 +22,7 @@ def save_profile(request, form):
         country=form.cleaned_data['country'],
         phone_number=form.cleaned_data['phone_number'],
     )
+    return profile
 
 
 def show_profile(request):

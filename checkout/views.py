@@ -46,16 +46,20 @@ def checkout(request):
 
     if request.method == 'POST':
         cart_items, total_cost = get_cart_items(request)
+        profile = None
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
             if request.user.is_authenticated:
                 try:
                     profile = UserProfile.objects.get(user=request.user)
-                    order.profile = profile
-                    order.save()
                 except UserProfile.DoesNotExist:
-                    save_profile(request, form)
+                    profile = None
+
+                if not profile:
+                    profile = save_profile(request, form)
+
+            order.profile = profile
             order.total_cost = total_cost
             order.stripe_pid = (
                 request.POST.get('client_secret').split('_secret')[0])
