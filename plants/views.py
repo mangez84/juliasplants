@@ -1,8 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Coalesce
 from profiles.views import get_comments
 from .models import Plant
+from .forms import PlantForm
 
 
 def sort_plants(plants, sort):
@@ -64,4 +67,35 @@ def plant_details(request, plant_id):
         'plant': plant,
     }
     template = 'plants/plant_details.html'
+    return render(request, template, context)
+
+
+@login_required
+def edit_plant(request, plant_id):
+    """Edit details for a specific plant."""
+    if not request.user.is_superuser:
+        messages.error(request, 'Only administrators may edit plants.')
+        return redirect('home')
+
+    plant = get_object_or_404(Plant, pk=plant_id)
+
+    if request.method == 'POST':
+        form = PlantForm(request.POST, request.FILES, instance=plant)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated plant.')
+            return redirect('plant_details', plant_id=plant.id)
+
+        messages.error(
+            request,
+            'Failed to update plant. Please ensure the form is valid.'
+        )
+        return redirect('plants')
+
+    form = PlantForm(instance=plant)
+    context = {
+        'plant': plant,
+        'form': form,
+    }
+    template = 'plants/edit_plant.html'
     return render(request, template, context)
