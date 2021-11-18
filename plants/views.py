@@ -71,6 +71,34 @@ def plant_details(request, plant_id):
 
 
 @login_required
+def add_plant(request):
+    """Add a plant to the database."""
+    if not request.user.is_superuser:
+        messages.error(request, 'Only administrators may add plants.')
+        return redirect('home')
+
+    if request.method == 'POST':
+        form = PlantForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added plant.')
+            return redirect('plants')
+
+        messages.error(
+            request,
+            'Failed to add plant. Please ensure the form is valid.'
+        )
+        return redirect('plants')
+
+    form = PlantForm()
+    context = {
+        'form': form,
+    }
+    template = 'plants/add_plant.html'
+    return render(request, template, context)
+
+
+@login_required
 def edit_plant(request, plant_id):
     """Edit details for a specific plant."""
     if not request.user.is_superuser:

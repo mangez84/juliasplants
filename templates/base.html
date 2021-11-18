@@ -73,7 +73,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbar-user">
                                 {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                <li><a class="dropdown-item" href="#">Add Plant</a></li>
+                                <li><a class="dropdown-item" href="{% url 'add_plant' %}">Add Plant</a></li>
                                 <li><a class="dropdown-item" href="#">Add Blog Post</a></li>
                                 {% endif %}
                                 <li><a class="dropdown-item" href="{% url 'show_profile' %}">My Profile</a></li>
