@@ -22,9 +22,8 @@ class Plant(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     discount_price = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
-    category = models.ForeignKey(
-        'Category', null=True, blank=True, on_delete=models.SET_NULL)
+    image = models.ImageField()
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.name)
