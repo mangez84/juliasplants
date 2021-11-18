@@ -7,19 +7,19 @@
 {% endblock %}
 
 {% block heading %}
-<h1>Add Plant</h1>
+<h1>Delete Plant</h1>
 {% endblock %}
 
 {% block content %}
 <div class="container d-flex flex-column flex-wrap justify-content-center flex-fill">
     <div class="row mb-3">
-        <div class="col-12 col-lg-6 d-flex flex-column">
-            <form action="{% url 'add_plant' %}" method="POST" enctype="multipart/form-data">
+        <div class="col-12 d-flex flex-column">
+            <form action="{% url 'del_plant' plant.id %}" method="POST">
                 {% csrf_token %}
-                {{ form | crispy }}
-                <div class="d-flex flex-wrap">
+                <p class="text-center">Are you sure you want to delete {{ plant.name }}?</p>
+                <div class="d-flex flex-wrap justify-content-center">
                     <a href="{% url 'plants' %}" class="btn btn-danger me-3 mt-3">Cancel</a>
-                    <button class="btn btn-success btn-submit mt-3" type="submit">Add Plant</button>
+                    <button class="btn btn-success btn-submit mt-3" type="submit">Delete Plant</button>
                 </div>
             </form>
         </div>

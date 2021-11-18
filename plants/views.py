@@ -127,3 +127,24 @@ def edit_plant(request, plant_id):
     }
     template = 'plants/edit_plant.html'
     return render(request, template, context)
+
+
+@login_required
+def del_plant(request, plant_id):
+    """Delete a specific plant."""
+    if not request.user.is_superuser:
+        messages.error(request, 'Only administrators may delete plants.')
+        return redirect('home')
+
+    plant = get_object_or_404(Plant, pk=plant_id)
+    context = {
+        'plant': plant,
+    }
+
+    if request.method == 'POST':
+        plant.delete()
+        messages.success(request, 'Successfully deleted plant.')
+        return redirect('plants')
+
+    template = 'plants/del_plant.html'
+    return render(request, template, context)
