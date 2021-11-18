@@ -15,7 +15,7 @@
         {% for blog_post in blog_posts %}
         <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
             <div class="card">
-                <a class="text-decoration-none" href="{% url 'show_blog_posts' %}">
+                <a class="text-decoration-none" href="{% url 'blog_post_details' blog_post.id %}">
                     <img src="{{ blog_post.plant.image.url }}" class="card-img-top" alt="{{ blog_post.plant.name }}">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title text-black">{{ blog_post.title }}</h5>

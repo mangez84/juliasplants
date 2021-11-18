@@ -16,6 +16,16 @@ def show_blog_posts(request):
     return render(request, template, context)
 
 
+def blog_post_details(request, blog_post_id):
+    """Return details for a specific plant."""
+    blog_post = get_object_or_404(BlogPost, pk=blog_post_id)
+    context = {
+        'blog_post': blog_post,
+    }
+    template = 'blog/blog_post_details.html'
+    return render(request, template, context)
+
+
 @login_required
 def add_blog_post(request):
     """Add a blog post to the database."""
