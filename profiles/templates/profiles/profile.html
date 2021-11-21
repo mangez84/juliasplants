@@ -46,7 +46,7 @@
                                         <a class="text-decoration-none"
                                             href="{% url 'checkout_confirm' order.order_uuid %}"
                                             title="{{ order.order_uuid }}">
-                                            {{ order.order_uuid | truncatechars:8 }}
+                                            {{ order.order_uuid | truncatechars:5 }}
                                         </a>
                                     </td>
                                     <td>{{ order.date | date:"d/m/y P" }}</td>
@@ -59,7 +59,7 @@
                                             {% endfor %}
                                         </ul>
                                     </td>
-                                    <td>{{ order.total_cost }} €</td>
+                                    <td class="text-nowrap">{{ order.total_cost }} €</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
