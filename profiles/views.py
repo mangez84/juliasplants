@@ -1,6 +1,7 @@
 import random
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import UserProfile, UserProfileComment
 from .forms import UserForm, UserProfileForm, UserProfileCommentForm
@@ -25,6 +26,7 @@ def save_profile(request, form):
     return profile
 
 
+@login_required
 def show_profile(request):
     """Return the profile page."""
     user = request.user
@@ -57,6 +59,7 @@ def show_profile(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_profile(request):
     """Edit profile information."""
     if request.method == 'POST':
@@ -80,6 +83,7 @@ def edit_profile(request):
     return redirect('show_profile')
 
 
+@login_required
 def add_comment(request):
     """Add user comments and ratings."""
     if request.method == 'POST':

@@ -17,7 +17,7 @@
                     <img src="{{ blog_post.plant.image.url }}" class="card-img-top" alt="{{ blog_post.plant.name }}">
                 </a>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ blog_post.title }}</h5>
+                    <h2 class="card-title">{{ blog_post.title }}</h2>
                     <p class="card-text text-muted">
                         <em>
                             {{ blog_post.date | date:"F j, Y" }} by {{ blog_post.profile.user.get_full_name }}
@@ -26,7 +26,7 @@
                     <p class="card-text">{{ blog_post.body }}</p>
                 </div>
             </div>
-            <div class="me-3 mt-3">
+            <div class="me-3 my-3">
                 <a class="btn btn-success" href="{% url 'show_blog_posts' %}">
                     <i class="fas fa-arrow-left me-1"></i>
                     Back to Blog Posts

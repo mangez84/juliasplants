@@ -36,28 +36,32 @@
                                         name="quantity-{{ cart_item.plant.id }}" value="{{ cart_item.quantity }}"
                                         min="1" max="20" class="form-control form-edit-quantity" required>
                                 </td>
-                                <td>{{ cart_item.price }} €</td>
-                                <td>{{ cart_item.total }} €</td>
+                                <td class="text-nowrap">{{ cart_item.price }} €</td>
+                                <td class="text-nowrap">{{ cart_item.total }} €</td>
                                 <td>
-                                    <button id="delete-{{ cart_item.plant.id }}"
-                                        class="btn btn-success form-delete-item" type="button">Remove</button>
+                                    <button id="delete-{{ cart_item.plant.id }}" class="btn btn-danger form-delete-item"
+                                        type="button">
+                                        <i class="fas fa-trash"></i>
+                                        <span class="sr-only">Remove Plant</span>
+                                    </button>
                                 </td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-center">
                     <p>Total Cost {{ total_cost }} €</p>
                 </div>
-                <div class="d-flex flex-wrap justify-content-end">
+                <div class="d-flex flex-wrap justify-content-center">
                     <a class="btn btn-success" href="{% url 'plants' %}"><i class="fas fa-arrow-left me-1"></i>Back to
                         Plants</a>
-                    <a class="btn btn-success ms-3" href="{% url 'checkout' %}"><i class="fas fa-lock me-1"></i>Checkout</a>
+                    <a class="btn btn-success ms-3" href="{% url 'checkout' %}"><i
+                            class="fas fa-lock me-1"></i>Checkout</a>
                 </div>
             </form>
             {% else %}
-            <p class="text-center">No plants in cart! Start shopping!</p>
+            <h2 class="text-center">No plants in the cart! Start shopping!</h2>
             {% endif %}
         </div>
     </div>

@@ -45,14 +45,14 @@
     </div>
     <div class="row">
         {% for plant in plants %}
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
+        <div class="col-12 col-md-6 col-lg-4 mb-3">
             <div class="card">
                 <a class="text-decoration-none" href="{% url 'plant_details' plant.id %}">
                     <img src="{{ plant.image.url }}" class="card-img-top" alt="{{ plant.name }}">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-black">
+                        <h2 class="card-title text-black">
                             {{ plant.name }}
-                        </h5>
+                        </h2>
                         <p class="card-text text-muted"><em>{{ plant.botanical_name }}</em></p>
                         {% if plant.discount_price %}
                         <p class="card-text text-danger ms-auto mt-auto">
@@ -87,7 +87,7 @@
 {% block footer %}
 {% if comments %}
 <hr>
-<div class="container">
+<div class="container mt-3">
     <div class="row">
         {% for comment in comments %}
         <div class="col-12 col-md-4 d-flex flex-column align-items-center">
