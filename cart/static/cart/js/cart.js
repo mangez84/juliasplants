@@ -3,7 +3,7 @@
 $(".form-edit-quantity").change(function (e) {
     e.preventDefault();
     $("#form-edit-cart").submit();
-})
+});
 
 $(".form-delete-item").click(function (e) {
     e.preventDefault();
@@ -17,4 +17,4 @@ $(".form-delete-item").click(function (e) {
     $.post(url, data).done(function() {
         location.reload();
     });
-})
+});

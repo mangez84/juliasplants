@@ -5,8 +5,8 @@ $("#sort-selector").change(function () {
     let selectedVal = $(this).val();
 
     if (selectedVal != "default") {
-        let sortKey = selectedVal.split("_")[0]
-        let sortDirection = selectedVal.split("_")[1]
+        let sortKey = selectedVal.split("_")[0];
+        let sortDirection = selectedVal.split("_")[1];
         currentURL.searchParams.set("sort", sortKey);
         currentURL.searchParams.set("direction", sortDirection);
         window.location.replace(currentURL);
