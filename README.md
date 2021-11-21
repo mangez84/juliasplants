@@ -25,8 +25,24 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
     - [Frameworks, Libraries and Software Used](#frameworks-libraries-and-software-used)
 4. [Data Model](#data-model)
 5. [Test](#test)
+    - [Validation Services](TEST.md#validation-services)
+        - [W3C Markup Validation Service](TEST.md#w3c-markup-validation-service)
+        - [W3C CSS Validation Service](TEST.md#w3c-css-validation-service)
+        - [JSHint](TEST.md#jshint)
+        - [PEP8 Online](TEST.md#pep8-online)
+    - [Testing User Stories](TEST.md#testing-user-stories)
+        - [Common Users](TEST.md#common-users)
+        - [Unregistered Users](TEST.md#unregistered-users)
+        - [Registered Users](TEST.md#registered-users)
+        - [Administrator Users](TEST.md#administrator-users)
+    - [Further Testing](TEST.md#further-testing)
 6. [Deployment](#deployment)
 7. [Credits](#credits)
+    - [Code](#code)
+    - [Content](#content)
+    - [Media](#media)
+        - [Images](#images)
+    - [Acknowledgements](#acknowledgements)
 
 ## UX
 
@@ -70,7 +86,11 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 
 #### Colours
 
+- The colours used on the site are inherited from the Bootstrap framework.
+
 #### Fonts
+
+- The Nunito font is used for navigation links, headings, forms, tables, buttons and text content.
 
 ### Wireframes
 
@@ -131,8 +151,37 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 
 ### Frameworks, Libraries and Software Used
 
+- [Django 3.2.8](https://www.djangoproject.com/)
+    - The website has been created using the Django framework.
+- [Stripe](https://stripe.com/)
+    - Stripe is used for the payment functionality.
 - [pgAdmin 4](https://www.pgadmin.org/)
     - The entity relationship diagram was created with pgAdmin 4.
+- [Bootstrap 5.1.3](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+    - The Bootstrap 5.0.2 framework is widely used in this project.
+    - Code for the grid system, navigation bar, forms, tables and cards have been copied and later modified to suit this project.
+- [jQuery 3.6.0](https://jquery.com/)
+    - jQuery is used in all JavaScript files.
+- [Git](https://git-scm.com/)
+    - Git is used for version control of the code in the project.
+- [Github](https://github.com/)
+    - The files for this project are stored in GitHub.
+- [Gitpod](https://gitpod.io/)
+    - Gitpod has been used as a development environment for this project.
+- [Heroku](https://www.heroku.com/)
+    - The production version of the website is hosted on Heroku.
+- [Amazon Web Services](https://aws.amazon.com/)
+    - AWS is used for the storage of static and media files.
+- [Balsamiq](https://balsamiq.com/)
+    - Balsamiq was used to create wireframes for this project.
+- [Google Fonts](https://fonts.google.com/)
+    - The fonts used on the website are imported from Google Fonts.
+- [Font Awesome](https://fontawesome.com/)
+    - Icons from Font Awesome can be seen on the site.
+- [favicon.io](https://favicon.io/)
+    - The favicon used on the website was obtained from [favicon.io](https://favicon.io/emoji-favicons/potted-plant/).
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
+    - Chrome DevTools was used extensively during the development of the website.
 
 ## Data Model
 
@@ -140,6 +189,36 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 
 ## Test
 
+- Tests performed are documented in [TEST.md](TEST.md).
+
 ## Deployment
 
 ## Credits
+
+### Code
+
+- The payment functionality is highly inspired by the Django mini project developed by [Code Institute](https://codeinstitute.net/).
+- The sort and search functionality is highly inspired by the Django mini project developed by [Code Institute](https://codeinstitute.net/).
+- The tip for the range template tag was found in this [Stack Overflow](https://codeinstitute.net/) post.
+- The tip for rendering the active navbar links was found in this [Stack Overflow](https://stackoverflow.com/a/27379100) post.
+- The tip for making the card images the same size was found in this [Stack Overflow](https://stackoverflow.com/a/54207386) post.
+
+### Content
+
+- The information about the benjamin fig was copied from [Wikipedia](https://en.wikipedia.org/wiki/Ficus_benjamina).
+- The information about the spider plant was copied from [Wikipedia](https://en.wikipedia.org/wiki/Chlorophytum_comosum).
+- The information about the cactus was copied from [Wikipedia](https://en.wikipedia.org/wiki/Turbinicarpus).
+
+### Media
+
+#### Images
+
+- The background image on the home page was obtained from [Scott Webb on Pixabay](https://pixabay.com/photos/plant-succulent-potted-white-space-2004483/).
+- The image of the benjamin fig was obtained from [KENPEI on Wikipedia](https://commons.wikimedia.org/wiki/File:Ficus_benjamina2.jpg).
+- The image of the spider plant was obtained from [Peter Coxhead on Wikipedia](https://commons.wikimedia.org/wiki/File:Hierbabuena_0611_Revised.jpg).
+- The image of the cactus was obtained from [Michael Wolf on Wikipedia](https://commons.wikimedia.org/wiki/File:Turbinicarpus_knuthianus.jpg).
+- The image of the thyme herb was obtained from [Henry Brisse on Wikipedia](https://commons.wikimedia.org/wiki/File:Thymus_vulgaris1.JPG).
+
+### Acknowledgements
+
+- My Code Institute mentor Gerard McBride for valuable feedback.
