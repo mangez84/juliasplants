@@ -1,0 +1,84 @@
+[{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "test",
+        "username": "test"
+    }
+}, {
+    "model": "plants.category",
+    "pk": 1,
+    "fields": {
+        "name": "Test",
+        "filter_name": "Test"
+    }
+}, {
+    "model": "plants.plant",
+    "pk": 1,
+    "fields": {
+        "name": "Test",
+        "botanical_name": "Test",
+        "description": "Test",
+        "price": "13.99",
+        "discount_price": null,
+        "image": "test.jpg",
+        "category": 1
+    }
+}, {
+    "model": "checkout.order",
+    "pk": 1,
+    "fields": {
+        "order_uuid": "a27c15ff-6bef-42d0-9023-9a5607cd902b",
+        "date": "2021-11-21T14:38:02.131Z",
+        "first_name": "Test",
+        "last_name": "Test",
+        "email": "test@test.com",
+        "address": "Test",
+        "city": "Test",
+        "postcode": "12345",
+        "country": "US",
+        "phone_number": "12345",
+        "total_cost": "13.99",
+        "stripe_pid": "Test",
+        "profile": 1
+    }
+}, {
+    "model": "checkout.orderitem",
+    "pk": 1,
+    "fields": {
+        "quantity": 1,
+        "total": "15.99",
+        "order": 1,
+        "plant": 1
+    }
+}, {
+    "model": "profiles.userprofile",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "address": "Test",
+        "city": "Test",
+        "postcode": "12345",
+        "country": "US",
+        "phone_number": "12345"
+    }
+}, {
+    "model": "profiles.userprofilecomment",
+    "pk": 1,
+    "fields": {
+        "title": "Test",
+        "comment": "Test",
+        "rating": 5,
+        "profile": 1
+    }
+}, {
+    "model": "blog.blogpost",
+    "pk": 1,
+    "fields": {
+        "title": "Test",
+        "body": "Test",
+        "date": "2021-11-18T13:54:36.130Z",
+        "profile": 1,
+        "plant": 1
+    }
+}]

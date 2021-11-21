@@ -91,6 +91,11 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 WSGI_APPLICATION = 'juliasplants.wsgi.application'
 
 
+# Fixture directories for testdata
+
+FIXTURE_DIRS = (os.path.join(BASE_DIR, 'tests', 'fixtures'),)
+
+
 # Allauth configuration
 
 AUTHENTICATION_BACKENDS = [
