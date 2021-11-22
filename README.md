@@ -1,5 +1,7 @@
 # Julia's Plants
 
+![Julia's Plants](readme/images/juliasplants.png)
+
 [Julia's Plants](https://juliasplants.herokuapp.com) is the site to visit if you want to make your home a little greener.
 
 We have a wide selection of high quality plants for sale.
@@ -185,7 +187,9 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 
 ## Data Model
 
-- [Entity Relationship Diagram](readme/images/erd.png)
+- Entity Relationship Diagram
+
+    ![Entity Relationship Diagram](readme/images/erd.png)
 
 ## Test
 
