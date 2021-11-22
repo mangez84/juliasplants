@@ -212,6 +212,9 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 - The information about the benjamin fig was copied from [Wikipedia](https://en.wikipedia.org/wiki/Ficus_benjamina).
 - The information about the spider plant was copied from [Wikipedia](https://en.wikipedia.org/wiki/Chlorophytum_comosum).
 - The information about the cactus was copied from [Wikipedia](https://en.wikipedia.org/wiki/Turbinicarpus).
+- The information about the thyme was copied from [Wikipedia](https://en.wikipedia.org/wiki/Thyme).
+- The information about the rose was copied from [Wikipedia](https://en.wikipedia.org/wiki/Rose).
+- The information about the basil was copied from [Wikipedia](https://en.wikipedia.org/wiki/Basil).
 
 ### Media
 
@@ -221,7 +224,9 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 - The image of the benjamin fig was obtained from [KENPEI on Wikipedia](https://commons.wikimedia.org/wiki/File:Ficus_benjamina2.jpg).
 - The image of the spider plant was obtained from [Peter Coxhead on Wikipedia](https://commons.wikimedia.org/wiki/File:Hierbabuena_0611_Revised.jpg).
 - The image of the cactus was obtained from [Michael Wolf on Wikipedia](https://commons.wikimedia.org/wiki/File:Turbinicarpus_knuthianus.jpg).
-- The image of the thyme herb was obtained from [Henry Brisse on Wikipedia](https://commons.wikimedia.org/wiki/File:Thymus_vulgaris1.JPG).
+- The image of the thyme was obtained from [Henry Brisse on Wikipedia](https://commons.wikimedia.org/wiki/File:Thymus_vulgaris1.JPG).
+- The image of the roses was obtained from [Jebulon on Wikipedia](https://commons.wikimedia.org/wiki/File:Bouquet_de_roses_roses.jpg).
+- The image of the basil was obtained from [Castielli on Wikipedia](https://commons.wikimedia.org/wiki/File:Basil-Basilico-Ocimum_basilicum-albahaca.jpg).
 
 ### Acknowledgements
 

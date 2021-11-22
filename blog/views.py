@@ -33,7 +33,11 @@ def add_blog_post(request):
         messages.error(request, 'Only administrators may add blog posts.')
         return redirect('home')
 
-    profile = get_object_or_404(UserProfile, user=request.user)
+    try:
+        profile = UserProfile.objects.get(user__username=request.user)
+    except UserProfile.DoesNotExist:
+        messages.error(request, 'Sorry, you must update your profile first!')
+        return redirect('show_profile')
 
     if request.method == 'POST':
         form = BlogForm(request.POST)
