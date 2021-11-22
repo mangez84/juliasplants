@@ -116,27 +116,74 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 ### Existing Features
 
 - All customers can see a clear overview of which plants are for sale.
+
 - All customers can clearly see which plants are currently discounted.
+
 - All customers can filter by category or currently discounted plants.
+
 - All customers can sort the plants by name, price or category.
+
 - All customers can search for a specific plant by name, description or category.
+
+    ![Plants](readme/images/plants.png)
+
 - All customers can click on a plant to see details.
+
 - All customers can add a plant to the shopping cart.
+
+    ![Plant Details](readme/images/plant_details.png)
+
 - All customers can navigate to the shopping cart to see the current cost.
+
 - All customers can navigate to the shopping cart and remove a plant or update the quantity.
+
 - All customers can navigate to the shopping cart and proceed to checkout.
+
+    ![Shopping Cart](readme/images/shopping_cart.png)
+
 - All customers will see an order confirmation after a purchase.
+
 - All customers will receive an order confirmation by email after a purchase.
+
+    ![Order Confirmation](readme/images/order_confirmation.png)
+
 - All customers can read about the benefits of registering an account.
+
 - Unregistered customers can register for an account.
+
+    ![Benefits Register](readme/images/benefits.png)
+
 - Registered customers can log in to see their profile page.
+
 - Registered customers can see their order history and update their contact, payment and delivery information.
+
+- Registered customers can send reviews.
+
+    ![Profile](readme/images/profile.png)
+
 - Registered customers can log out.
+
 - Registered customers can have their payment and delivery information prefilled at checkout.
+
+    ![Checkout](readme/images/checkout.png)
+
 - Registered customers can reset their password if they forget it.
+
 - A site admin can add new plants to the site.
+
 - A site admin can update information for existing plants.
+
 - A site admin can delete a plant.
+
+    ![Add Edit Delete Plants](readme/images/plants_crud.png)
+
+- A site admin can add new blog posts.
+
+- A site admin can update information for existing blog posts.
+
+- A site admin can delete a blog post.
+
+    ![Add Edit Delete Blog](readme/images/blog_crud.png)
 
 ### Upcoming Features
 
@@ -215,6 +262,7 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 - The information about the thyme was copied from [Wikipedia](https://en.wikipedia.org/wiki/Thyme).
 - The information about the rose was copied from [Wikipedia](https://en.wikipedia.org/wiki/Rose).
 - The information about the basil was copied from [Wikipedia](https://en.wikipedia.org/wiki/Basil).
+- The information in the blog post was copied from [Gardening Know How](https://www.gardeningknowhow.com/houseplants/spider-plant/spider-plant-care-gardening-tips-for-spider-plants.htm)
 
 ### Media
 
