@@ -147,6 +147,10 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 
     ![Order Confirmation](readme/images/order_confirmation.png)
 
+- All customers can read reviews from other users.
+
+    ![Reviews](readme/images/comment.png)
+
 - All customers can read about the benefits of registering an account.
 
 - Unregistered customers can register for an account.
@@ -262,7 +266,7 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 - The information about the thyme was copied from [Wikipedia](https://en.wikipedia.org/wiki/Thyme).
 - The information about the rose was copied from [Wikipedia](https://en.wikipedia.org/wiki/Rose).
 - The information about the basil was copied from [Wikipedia](https://en.wikipedia.org/wiki/Basil).
-- The information in the blog post was copied from [Gardening Know How](https://www.gardeningknowhow.com/houseplants/spider-plant/spider-plant-care-gardening-tips-for-spider-plants.htm)
+- The information in the blog post was copied from [Gardening Know How](https://www.gardeningknowhow.com/houseplants/spider-plant/spider-plant-care-gardening-tips-for-spider-plants.htm).
 
 ### Media
 
