@@ -15,6 +15,7 @@
     <div class="row">
         <div class="col-12 col-lg-6 my-3">
             {% if request.session.cart %}
+            <h2 class="text-center">Order</h2>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -41,10 +42,12 @@
                 <p>Total Cost {{ total_cost }} €</p>
             </div>
             {% else %}
-            <p>No plants in cart! Start shopping!</p>
+            <h2 class="text-center">No plants in cart! Start shopping!</h2>
             {% endif %}
         </div>
         <div class="col12 col-lg-6 my-3">
+            {% if request.session.cart %}
+            <h2 class="text-center">Details</h2>
             <form id="form-checkout" class="form" action="{% url 'checkout' %}" method="POST">
                 {% csrf_token %}
                 {{ form | crispy }}
@@ -64,6 +67,7 @@
                     </button>
                 </div>
             </form>
+            {% endif %}
         </div>
     </div>
 </div>

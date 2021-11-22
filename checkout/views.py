@@ -80,6 +80,10 @@ def checkout(request):
         return redirect('checkout')
 
     cart_items, total_cost = get_cart_items(request)
+
+    if not total_cost:
+        return redirect('show_cart')
+
     stripe_total = round(total_cost * 100)
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
