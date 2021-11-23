@@ -249,6 +249,8 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 
 ## Data Model
 
+- The data model is descibed in the entity relationship diagram below.
+
 - Entity Relationship Diagram
 
     ![Entity Relationship Diagram](readme/images/erd.png)
@@ -416,7 +418,9 @@ After cloning the repository use the following procedure to run the application 
 - The information about the thyme was copied from [Wikipedia](https://en.wikipedia.org/wiki/Thyme).
 - The information about the rose was copied from [Wikipedia](https://en.wikipedia.org/wiki/Rose).
 - The information about the basil was copied from [Wikipedia](https://en.wikipedia.org/wiki/Basil).
-- The information in the blog post was copied from [Gardening Know How](https://www.gardeningknowhow.com/houseplants/spider-plant/spider-plant-care-gardening-tips-for-spider-plants.htm).
+- The information in the spider plant blog post was copied from [Gardening Know How](https://www.gardeningknowhow.com/houseplants/spider-plant/spider-plant-care-gardening-tips-for-spider-plants.htm).
+- The information in the cactus blog post was copied from [West Coast Gardens](https://westcoastgardens.ca/our-resources/5-care-tips-to-keep-your-cactus-happy).
+- The information in the benjamin fig blog post was copied from [The Spruce](https://westcoastgardens.ca/our-resources/5-care-tips-to-keep-your-cactus-happy).
 
 ### Media
 
