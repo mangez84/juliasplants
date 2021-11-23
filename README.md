@@ -39,6 +39,15 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
         - [Administrator Users](TEST.md#administrator-users)
     - [Further Testing](TEST.md#further-testing)
 6. [Deployment](#deployment)
+    - [Production Environment](#production)
+        - [Gmail](#gmail)
+        - [AWS](#aws)
+        - [Stripe](#stripe)
+        - [Heroku](#heroku)
+    - [Test Environment](#test-environment)
+        - [Fork the GitHub Repository](#fork-the-github-repository)
+        - [Clone the GitHub Repository](#clone-the-github-repository)
+        - [Run the Application Locally](#run-the-application-locally)
 7. [Credits](#credits)
     - [Code](#code)
     - [Content](#content)
@@ -223,6 +232,8 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
     - Gitpod has been used as a development environment for this project.
 - [Heroku](https://www.heroku.com/)
     - The production version of the website is hosted on Heroku.
+- [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql)
+    - The production database is hosted in a managed service provided by Heroku.
 - [Amazon Web Services](https://aws.amazon.com/)
     - AWS is used for the storage of static and media files.
 - [Balsamiq](https://balsamiq.com/)
@@ -247,6 +258,145 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 - Tests performed are documented in [TEST.md](TEST.md).
 
 ## Deployment
+
+### Production Environment
+
+Julia's Plants was deployed to Heroku using the following procedure.
+
+#### Gmail
+
+- Emails are sent via Gmail and the configuration was done based on the information in this [article](https://dev.to/abderrahmanemustapha/how-to-send-email-with-django-and-gmail-in-production-the-right-way-24ab).
+
+#### AWS
+
+- [Create an S3 bucket in AWS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html) for storage of static and media files.
+- Create a [user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) and [group](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_create.html) for programmatic access.
+- Save the `access key id` and `secret access key` in a safe place.
+- [Create a policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_rw-bucket.html) that allow **Read** and **Write** access to the S3 bucket. Assign the policy to the group.
+- Create a folder in the S3 bucket named media. The static folder will be created automatically when `collectstatic` is run during deploy.
+
+#### Stripe
+
+- Create a [Stripe](https://stripe.com/) account.
+- When logged in click on **Developers** and then **API keys**. Retrieve your `public key` and `secret key`.
+- In **Webhooks** click **Add endpoint** and enter `https://juliasplants.herokuapp.com/checkout/webhook/` as the **Endpoint URL**.
+- Click **Select events** and choose `payment_intent.payment_failed` and `payment_intent.succeeded`.
+- Make a note of your `webhook signing secret`.
+
+#### Heroku
+
+- Log into [Heroku](https://www.heroku.com/) and click on the **New** button and choose **Create new app**.
+- Choose a name and region for the app and click **Create app**.
+- In the overview click **Configure Add-ons**. Search for **postgres** and choose **Heroku Postgres**.
+- Choose the plan **Hobby Dev - Free** and click **Submit Order Form**.
+- Create a file with a list of dependencies that must be installed for the application to run properly:
+    ```
+    pip3 freeze --local > requirements.txt
+    ```
+- Create a file named Procfile with the following content:
+    ```
+    web: gunicorn juliasplants.wsgi:application
+    ```
+- In Heroku click on **Settings** and then **Reveal Config Vars**.
+- Add names and values for environment variables.
+    - The environment variable DATABASE_URL is added automatically after configuring Heroku Postgres. 
+    - Required environment variables:
+
+        ```
+        DATABASE_URL=<Added automatically after configuring Heroku Postgres>
+        AWS_ACCESS_KEY_ID=<Retrieve from AWS>
+        AWS_S3_REGION_NAME=<Retrieve from AWS>
+        AWS_SECRET_ACCESS_KEY=<Retrieve from AWS>
+        AWS_STORAGE_BUCKET_NAME=<Retrieve from AWS>
+        EMAIL_HOST=<Retrieve from Gmail>
+        EMAIL_HOST_PASS=<Retrieve from Gmail>
+        EMAIL_HOST_USER=<Retrieve from Gmail>
+        EMAIL_PORT=<Retrieve from Gmail>
+        EMAIL_USE_TLS=True
+        SECRET_KEY=<Generate a secure one>
+        STRIPE_PUBLIC_KEY=<Retrieve from Stripe>
+        STRIPE_SECRET_KEY=<Retrieve from Stripe>
+        STRIPE_WH_SECRET=<Retrieve from Stripe>
+        USE_AWS=True
+        ```
+
+- Click on **Deploy** in the navigation bar. Choose [Github](https://github.com/) next to **Deployment method**.
+- Next to **Connect to GitHub** search for your [repository](https://github.com/mangez84/juliasplants) and click **Connect**.
+- In the **Automatic deploys** section choose a branch and click on **Enable Automatic Deploys**.
+- In a little while, the [application](http://juliasplants.herokuapp.com/) will be available on Heroku.
+
+### Test Environment
+
+#### Fork the GitHub Repository
+
+To make a **fork** of this repository to your own account use the following procedure.
+
+- Log into your [GitHub](https://github.com/) account and browse to [this repository](https://github.com/mangez84/juliasplants).
+- Locate the **Fork** button in the upper right corner and click it.
+- You should now have a copy of the repository in your own account.
+
+#### Clone the GitHub Repository
+
+To make a **clone** of this repository use the following procedure.
+
+- Log into your [GitHub](https://github.com/) account and browse to the [repository](https://github.com/mangez84/juliasplants).
+- Locate the **Code** button and click it.
+- Choose **Download ZIP** from the dropdown menu to download the project as a compressed file or copy the **HTTPS** link.
+- If you copied the HTTPS link open a terminal with access to [`git`](https://git-scm.com/).
+- Navigate to or create a desired working directory for the project.
+- Type **git clone** followed by the HTTPS link you copied.
+
+    ```
+    git clone https://github.com/mangez84/juliasplants
+    ```
+
+- Press Enter and a local clone will be created in your current working directory.
+
+#### Run the Application Locally
+
+After cloning the repository use the following procedure to run the application locally.
+
+- Change directory to juliasplants
+
+    ```
+    cd juliasplants
+    ```
+
+- Use pip to install dependencies.
+
+    ```
+    pip install -r requirements.txt
+    ```
+
+- Set and configure required environment variables.
+    - Required environment variables:
+
+        ```
+        DEVELOPMENT=True
+        SECRET_KEY=<Generate a secure one>
+        STRIPE_PUBLIC_KEY=<Retrieve from Stripe>
+        STRIPE_SECRET_KEY=<Retrieve from Stripe>
+        STRIPE_WH_SECRET=<Retrieve from Stripe>
+        ```
+
+- Create the database.
+
+    ```
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
+- Run the application.
+
+    ```
+    python manage.py runserver
+    ```
+
+- Browse the site.
+
+    ```
+    http://localhost:8000/
+    ```
 
 ## Credits
 
@@ -282,4 +432,5 @@ Welcome to [Julia's Plants](https://juliasplants.herokuapp.com)!
 
 ### Acknowledgements
 
+- My wife for the best support in the world.
 - My Code Institute mentor Gerard McBride for valuable feedback.
