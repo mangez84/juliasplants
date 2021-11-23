@@ -14,6 +14,7 @@
 <div class="container d-flex flex-column flex-wrap justify-content-center flex-fill">
     <div class="row mb-3">
         <div class="col-12 col-lg-6 d-flex flex-column">
+            <h2 class="text-center">Details</h2>
             <form action="{% url 'add_plant' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
