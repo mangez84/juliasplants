@@ -9,8 +9,10 @@
         - [JSHint](#jshint)
         - [Pylint](#pylint)
     - [Testing User Stories](#testing-user-stories)
+    - [Unit Tests](#unit-tests)
     - [Further Testing](#further-testing)
     - [Known Bugs](#known-bugs)
+        - [Fixed](#fixed)
         - [Unfixed](#unfixed)
 
 ## Test
@@ -133,11 +135,21 @@
 
     ![Blog](readme/images/blog_add.png)
 
+### Unit Tests
+
+- Basic unit tests for some of the views have been created.
+- The tests assert whether HTTP status code 200 and the correct template are returned.
+- More unit tests will be added in a later release.
+
 ### Further Testing
 
 - Testing of the website has been performed with Google Chrome, Microsoft Edge and Mozilla Firefox.
 
 ### Known Bugs
+
+#### Fixed
+
+- An error was displayed when trying to reach the checkout page without items in the cart. If the cart is empty the user is redirected back to the shopping cart.
 
 #### Unfixed
 
